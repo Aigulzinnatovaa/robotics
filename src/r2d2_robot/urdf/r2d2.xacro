@@ -1,0 +1,91 @@
+<?xml version="1.0"?>
+<robot name="my_robot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <link name="base_link">
+    <visual>
+      <geometry>
+        <mesh filename="package://r2d2_description/meshes/r2d2.dae"/>
+      </geometry>
+    </visual>
+  </link>
+
+  <joint name="head_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="head_link"/>
+    <origin xyz="0 0 0.25" rpy="0 0 0"/>
+  </joint>
+  <link name="head_link">
+    <visual>
+      <geometry>
+        <mesh filename="package://r2d2_description/meshes/r2d2_head.dae"/>
+      </geometry>
+      <material name="head_color">
+        <color rgba="1 0 0 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <joint name="body_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="body_link"/>
+    <origin xyz="0 0 -0.25" rpy="0 0 0"/>
+  </joint>
+  <link name="body_link">
+    <visual>
+      <geometry>
+        <mesh filename="package://r2d2_description/meshes/r2d2_body.dae"/>
+      </geometry>
+      <material name="body_color">
+        <color rgba="0 1 0 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <joint name="leg_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="leg_link"/>
+    <origin xyz="-0.15 -0.15 -0.25" rpy="0 0 0"/>
+  </joint>
+  <link name="leg_link">
+    <visual>
+      <geometry>
+        <mesh filename="package://r2d2_description/meshes/r2d2_leg.dae"/>
+      </geometry>
+      <material name="leg_color">
+        <color rgba="0 0 1 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <joint name="foot_joint" type="fixed">
+    <parent link="leg_link"/>
+    <child link="foot_link"/>
+    <origin xyz="0 0 -0.15" rpy="0 0 0"/>
+  </joint>
+  <link name="foot_link">
+    <visual>
+      <geometry>
+        <mesh filename="package://r2d2_description/meshes/r2d2_foot.dae"/>
+      </geometry>
+      <material name="foot_color">
+        <color rgba="1 1 0 1"/>
+      </material>
+    </visual>
+  </link>
+  <joint name="camera_joint" type="fixed">
+  <parent link="head_link"/>
+  <child link="camera_link"/>
+  <origin xyz="0.1 0 0" rpy="0 0 0"/>
+</joint>
+<link name="camera_link">
+  <visual>
+    <geometry>
+      <box size="0.05 0.05 0.05"/>
+    </geometry>
+    <material name="camera_color">
+      <color rgba="1 1 1 1"/>
+    </material>
+  </visual>
+</link>
+
+	
+</robot>
